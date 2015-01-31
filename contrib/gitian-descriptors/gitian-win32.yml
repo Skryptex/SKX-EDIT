@@ -18,7 +18,7 @@ remotes:
 files:
 - "qt-win32-4.8.5-gitian-r8.zip"
 - "boost-win32-1.55.0-gitian-r6.zip"
-- "bitcoin08-deps-win32-gitian-r12.zip"
+- "bitcoin08-deps-win32-gitian-r13.zip"
 script: |
   #
   STAGING=$HOME/staging
