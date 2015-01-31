@@ -1,0 +1,9 @@
+Building Skryptex
+
+See doc/readme-qt.rst for instructions on building Skryptex-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Skryptex.
+
+See doc/build-*.txt for instructions on building skryptexd,
+the intended-for-services, no-graphical-interface, reference
+implementation of Skryptex.
