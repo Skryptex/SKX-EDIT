@@ -1127,9 +1127,7 @@ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
         bnResult = bnProofOfWorkLimit;
     return bnResult.GetCompact();
 }
-//////#######////////##########///###////
-//##//##---KIMOTO--START---//##//##/
-//#####//#####/////########//////###////
+//Kimoto-Start
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64 TargetBlocksSpacingSeconds, uint64 PastBlocksMin, uint64 PastBlocksMax) {
         //* current difficulty formula, Skryptex - Kimoto gravity well *//
         const CBlockIndex  *BlockLastSolved                                = pindexLast;
@@ -1203,7 +1201,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
         
         return bnNew.GetCompact();
 }
-//##//##---KIMOTO-END---//##//##//##/
+//Kimoto-end
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
         unsigned int retarget = SXDR_G;
@@ -1215,8 +1213,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             if (pindexLast->nHeight + 1 >= 1) retarget = SXDR_G;
             else retarget = SXDR_L;
         }
-        /////////////////////////
-        // Default Bitcoin style retargeting
+		
+        // Default Litecoin retarget
         if (retarget == SXDR_L)
         {
             unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
@@ -1230,7 +1228,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         // Special difficulty rule for testnet:
         if (fTestNet)
         {
-            // If the new block's timestamp is more than 2* 10 minutes
+            // If the new block's timestamp is more than 2* 1 minute
             // then allow mining of a min-difficulty block.
             if (pblock->nTime > pindexLast->nTime + nTargetSpacing*2)
                 return nProofOfWorkLimit;
@@ -1297,9 +1295,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         
         return KimotoGravityWell(pindexLast, pblock, BlocksTargetSpacing, PastBlocksMin, PastBlocksMax);
 }
-///######//////#######//////#######///////######//////#######//
-///=====           END    RETARGET     ZONE     =====////////
-///######//////#######//////#######///////######//////#######//
+
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 {
     CBigNum bnTarget;
